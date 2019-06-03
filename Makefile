@@ -11,5 +11,8 @@ test: ## Test npm dependencies for the api, admin, and frontend apps
 	@echo test
 
 
+gen:
+	go generate ./pkg/...
+
 dev: ## Run the web server
 	air -c .air.toml
