@@ -12,11 +12,11 @@ type seqd struct {
 
 var Seqd *seqd
 
-func init()  {
+func init() {
 	Seqd = NewSeqd(100)
 }
 
-func Generate () snowflake.ID {
+func Generate() snowflake.ID {
 	return Seqd.nodes[rand.Intn(len(Seqd.nodes))].Generate()
 }
 
@@ -33,4 +33,3 @@ func NewSeqd(nodeLimit int) *seqd {
 		nodes: nodes,
 	}
 }
-
