@@ -1,0 +1,25 @@
+# account base config
+
+[databse]
+  [databse.master]
+    engine = "mysql"
+    name = "account"
+    user = "root"
+    password = "123456"
+    host = "127.0.0.1"
+    port = 4406
+    subFix = "charset=utf8mb4&loc=Local&parseTime=true"
+    maxOpenConns = 100
+
+  [[databse.slaves]]
+    engine = "mysql"
+    name = "account"
+    user = "root"
+    password = "123456"
+    host = "127.0.0.1"
+    port = 4406
+    subFix = "charset=utf8mb4&loc=Local&parseTime=true"
+    maxOpenConns = 100
+
+[auth]
+  secretKey = "oHon8zzsF13u2Uyj23S0P2xbtlRmjDIlDMZh7GwCxKRhpjjdUOo3gFtXQ4pT8Dvg" # SHA-256 slat for password generate
