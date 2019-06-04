@@ -11,7 +11,6 @@ import (
   Argon2( Argon2(sha512(password) + uid, strength 10) + global_salt, strength 10)
  */
 func MakePassword(password string, userSlat string) string {
-
 	// sha512(password)
 	sha := sha512.New512_256()
 	sha.Write([]byte(password))

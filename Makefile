@@ -1,7 +1,5 @@
 .PHONY: help
 
-export GO111MODULE=on
-
 help:
 	@printf "Usage: make [target]\n\n"
 	@echo Targets:
@@ -9,7 +7,6 @@ help:
 
 test: ## Test npm dependencies for the api, admin, and frontend apps
 	@echo test
-
 
 gen:
 	go generate ./pkg/...
