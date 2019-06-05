@@ -12,6 +12,7 @@ func init(){
 	config.Conf.Load("./etc")
 	storage.InitDB(config.Conf.DataBase)
 	storage.InitRedis(config.Conf.Redis)
+	storage.InitSessionManager(storage.Cache)
 }
 
 func main() {

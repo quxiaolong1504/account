@@ -2,11 +2,13 @@ package register
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/icza/session"
 	"github.com/quxiaolong/account/pkg/controllers"
 	"github.com/quxiaolong/account/pkg/errs"
 	"github.com/quxiaolong/account/pkg/models"
 	"github.com/quxiaolong/account/pkg/utils/storage"
 	"net/http"
+	"time"
 )
 
 
@@ -40,13 +42,20 @@ func VerifyDigitalHandler (c *gin.Context) {
 	if !controllers.VerifyDigital(payload.Phone, payload.Digital){
 		panic(errs.VerifyDigitalFailed)
 	}
-
-	if err := controllers.CreateUser(payload.Phone); err != nil {
+	user, err := controllers.CreateUser(payload.Phone)
+	if  err != nil {
 		panic("")
 	}
 
-	// TODO Set AccessToken to Cookie or response content
-	// Web: x_l0: access token -> cookie
-	// Mobile or WecChat: {"access_token": "access_token", expire_at: "", refresh_token: ""}
-	c.JSON(http.StatusOK, gin.H{"message": "ok"})
+	sess := session.NewSessionOptions(&session.SessOptions{
+		Timeout: time.Hour * 24 * 30,
+	})
+	sess.SetAttr("uid", user.UID)
+	storage.SessMgr.Add(sess, c.Writer)
+	c.JSON(http.StatusOK, gin.H{ "token": sess.ID(), "expired_at": time.Now().Add(sess.Timeout())})
+}
+
+func HelloHandler(c *gin.Context) {
+	uid := c.Value("uid")
+	c.JSON(http.StatusOK, gin.H{"uid": uid})
 }

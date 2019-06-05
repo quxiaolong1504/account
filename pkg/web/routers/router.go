@@ -10,9 +10,11 @@ func NewRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(gin.Logger())
 	r.Use(middlewares.Recover())
+	r.Use(middlewares.Authentication())
 
 	// register handler for router
 	r.POST("/register", register.SendRegDigitalHandler)
 	r.POST("/register/verify", register.VerifyDigitalHandler)
+	r.GET("/hello", register.HelloHandler)
 	return r
 }
