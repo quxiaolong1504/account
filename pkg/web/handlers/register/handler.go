@@ -49,10 +49,14 @@ func VerifyDigitalHandler (c *gin.Context) {
 
 	sess := session.NewSessionOptions(&session.SessOptions{
 		Timeout: time.Hour * 24 * 30,
+		IDLength: 144,
 	})
 	sess.SetAttr("uid", user.UID)
 	storage.SessMgr.Add(sess, c.Writer)
-	c.JSON(http.StatusOK, gin.H{ "token": sess.ID(), "expired_at": time.Now().Add(sess.Timeout())})
+	c.JSON(http.StatusOK, gin.H{ "token": sess.ID(),
+		"expired_at": time.Now().Add(sess.Timeout()),
+		"token_name": "q_x0",
+	})
 }
 
 func HelloHandler(c *gin.Context) {

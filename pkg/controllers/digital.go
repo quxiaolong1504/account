@@ -52,7 +52,7 @@ func GenDigital() int {
 }
 
 func GenSmsContent(digital int) string{
-	return fmt.Sprintf(`您的验证码是:%d, 有效期 5分钟.`, digital)
+	return fmt.Sprintf(`您的验证码是: %d, 有效期 5分钟.`, digital)
 }
 
 func InspectKey(redisKey string) error {

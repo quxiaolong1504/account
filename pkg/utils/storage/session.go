@@ -9,5 +9,10 @@ import (
 var SessMgr session.Manager
 
 func InitSessionManager(client *redis.Client) {
-	SessMgr = session.NewCookieManager(utils.NewRedisStore(client))
+	store := utils.NewRedisStore(client)
+	SessMgr = session.NewCookieManagerOptions(store,
+		&session.CookieMngrOptions{
+			SessIDCookieName:"q_x0",
+		},
+	)
 }
