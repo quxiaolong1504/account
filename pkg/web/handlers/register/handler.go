@@ -2,7 +2,6 @@ package register
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/icza/session"
 	"github.com/quxiaolong/account/pkg/controllers"
 	"github.com/quxiaolong/account/pkg/errs"
 	"github.com/quxiaolong/account/pkg/models"
@@ -46,13 +45,7 @@ func VerifyDigitalHandler (c *gin.Context) {
 	if  err != nil {
 		panic("")
 	}
-
-	sess := session.NewSessionOptions(&session.SessOptions{
-		Timeout: time.Hour * 24 * 30,
-		IDLength: 144,
-	})
-	sess.SetAttr("uid", user.UID)
-	storage.SessMgr.Add(sess, c.Writer)
+	sess := storage.WriteNewSession(user.UID, c.Writer)
 	c.JSON(http.StatusOK, gin.H{ "token": sess.ID(),
 		"expired_at": time.Now().Add(sess.Timeout()),
 		"token_name": "q_x0",
