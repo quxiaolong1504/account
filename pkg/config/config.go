@@ -8,7 +8,8 @@ import (
 )
 
 type Config struct {
-	DataBase *DBConfig `toml:"databse"`
+	DataBase *DBConfig `toml:"database"`
+	Redis *RedisConfig `toml:"redis"`
 	Auth *AuthConfig `toml:"auth"`
 }
 

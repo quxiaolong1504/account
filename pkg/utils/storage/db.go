@@ -17,6 +17,7 @@ type MysqlCli struct {
 var Mysql *MysqlCli
 
 func InitDB(conf *config.DBConfig) {
+	logger.Logger.Infof("Init  database client")
 	master , err := gorm.Open(conf.Master.Engine,  conf.Master.Uri())
 	master.DB().SetMaxOpenConns(int(conf.Master.MaxOpenConns))
 	if err != nil {

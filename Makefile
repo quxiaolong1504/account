@@ -1,5 +1,7 @@
 .PHONY: help
 
+export GO111MODULE=on
+
 help:
 	@printf "Usage: make [target]\n\n"
 	@echo Targets:

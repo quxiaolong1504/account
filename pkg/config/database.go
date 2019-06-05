@@ -21,4 +21,5 @@ func (m *MySQLConfig) Uri () string {
 type DBConfig struct {
 	Master *MySQLConfig   `toml:"master"`
 	Slaves []*MySQLConfig `toml:"slaves"`
+	Redis *RedisConfig 	`toml:"redis"`
 }
