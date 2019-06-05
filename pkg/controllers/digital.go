@@ -1,4 +1,4 @@
-package digital
+package controllers
 
 import (
 	"fmt"

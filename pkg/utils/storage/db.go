@@ -6,12 +6,17 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/quxiaolong/account/pkg/config"
 	"github.com/quxiaolong/account/pkg/utils/logger"
+	"math/rand"
 )
 
 
 type MysqlCli struct {
 	Master *gorm.DB
 	Slaves []*gorm.DB
+}
+
+func (m *MysqlCli)GetSlave() *gorm.DB {
+	return m.Slaves[rand.Intn(len(m.Slaves))]
 }
 
 var Mysql *MysqlCli

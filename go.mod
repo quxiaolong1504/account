@@ -12,4 +12,5 @@ require (
 	github.com/jinzhu/gorm v1.9.8
 	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7
 	github.com/spf13/cast v1.3.0
+	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c
 )
