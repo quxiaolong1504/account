@@ -25,3 +25,4 @@ func CreateUser(phone string) (*models.User, error) {
 	storage.Mysql.Master.Save(user)
 	return user, nil
 }
+

@@ -45,7 +45,6 @@ func Monitor() gin.HandlerFunc {
 
 
 func genPerformancePoint(handlerName string, start time.Time, c *gin.Context) *client.Point {
-	time.Sleep(time.Second * 2)
 	rt := time.Since(start).Seconds()
 	point1, _ := client.NewPoint(
 		"performance",

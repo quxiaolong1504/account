@@ -19,7 +19,7 @@ func InitSessionManager(client *redis.Client) {
 	)
 }
 
-func WriteNewSession(uid string, w http.ResponseWriter) session.Session {
+func NewSession(uid string, w http.ResponseWriter) session.Session {
 	sess := session.NewSessionOptions(&session.SessOptions{
 		Timeout: time.Hour * 24 * 30,
 		IDLength: 144,

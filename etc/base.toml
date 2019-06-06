@@ -43,3 +43,7 @@
 
 [auth]
   secretKey = "oHon8zzsF13u2Uyj23S0P2xbtlRmjDIlDMZh7GwCxKRhpjjdUOo3gFtXQ4pT8Dvg" # SHA-256 slat for password generate
+
+[wechat]
+  app_id = ""
+  app_secret = ""

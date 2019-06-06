@@ -56,5 +56,8 @@ var (
 	DigitalFailed = NewDefaultAPIError(http.StatusBadRequest, 4020, "DigitalFailed", "验证码发送失败")
 
 	VerifyDigitalFailed = NewDefaultAPIError(http.StatusBadRequest, 4021, "VerifyDigitalFailed", "验证码不正确")
+
 	AlreadyExist= NewDefaultAPIError(http.StatusBadRequest, 4031, "AlreadyExist", "已存在")
+
+	WeChatLoginFailed = NewDefaultAPIError(http.StatusInternalServerError, 4030, "WeChatLoginFailed", "微信登录失败")
 )

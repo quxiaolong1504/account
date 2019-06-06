@@ -12,6 +12,7 @@ type Config struct {
 	Redis *RedisConfig `toml:"redis"`
 	Auth *AuthConfig `toml:"auth"`
 	InfluxDB *InfluxDBConfig `toml:"influxdb"`
+	WeChat *WeChatConfig `toml:"wechat"`
 }
 
 var Conf *Config
