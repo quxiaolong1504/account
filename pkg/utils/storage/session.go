@@ -4,6 +4,7 @@ import (
 	"github.com/go-redis/redis"
 	"github.com/icza/session"
 	"github.com/quxiaolong/account/pkg/utils"
+	"github.com/quxiaolong/account/pkg/utils/logger"
 	"net/http"
 	"time"
 )
@@ -11,6 +12,7 @@ import (
 var SessMgr session.Manager
 
 func InitSessionManager(client *redis.Client) {
+	logger.Logger.Infof("Init Session Manager")
 	store := utils.NewRedisStore(client)
 	SessMgr = session.NewCookieManagerOptions(store,
 		&session.CookieMngrOptions{
