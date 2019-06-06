@@ -11,6 +11,7 @@ type Config struct {
 	DataBase *DBConfig `toml:"database"`
 	Redis *RedisConfig `toml:"redis"`
 	Auth *AuthConfig `toml:"auth"`
+	InfluxDB *InfluxDBConfig `toml:"influxdb"`
 }
 
 var Conf *Config

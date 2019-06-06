@@ -1,5 +1,9 @@
 # account base config
 
+[common]
+  sentry_dsn = ""
+  stats_url = ""
+
 [database]
   [database.master]
     engine = "mysql"
@@ -21,12 +25,21 @@
     subFix = "charset=utf8mb4&loc=Local&parseTime=true"
     maxOpenConns = 100
 
+
 [redis]
   [redis.cache]
     host = "127.0.0.1"
     port = 6379
     db = 0
     password = ""
+
+[influxdb]
+  protocol = "http"
+  host = "quxl.dev.rack.zhihu.com"
+  port = 8086
+  username = ""
+  password = ""
+
 
 [auth]
   secretKey = "oHon8zzsF13u2Uyj23S0P2xbtlRmjDIlDMZh7GwCxKRhpjjdUOo3gFtXQ4pT8Dvg" # SHA-256 slat for password generate

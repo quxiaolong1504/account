@@ -21,7 +21,7 @@ func (m *MysqlCli)GetSlave() *gorm.DB {
 
 var Mysql *MysqlCli
 
-func InitDB(conf *config.DBConfig) {
+func InitMysql(conf *config.DBConfig) {
 	logger.Logger.Infof("Init  database client")
 	master , err := gorm.Open(conf.Master.Engine,  conf.Master.Uri())
 	master.DB().SetMaxOpenConns(int(conf.Master.MaxOpenConns))
@@ -45,7 +45,7 @@ func InitDB(conf *config.DBConfig) {
 	}
 }
 
-func ShutDown() {
+func ShutDownMysql() {
 	Mysql.Master.Close()
 	for i:=0; i <= len(Mysql.Slaves); i++ {
 		Mysql.Slaves[i].Close()

@@ -27,3 +27,7 @@ func NewClient(redisConf *config.RedisConf) *redis.Client {
 		DB:       int(redisConf.DB),
 	})
 }
+
+func ShutdownRedis() {
+	Cache.Close()
+}
