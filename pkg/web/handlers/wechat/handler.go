@@ -7,12 +7,16 @@ import (
 	"github.com/quxiaolong/account/pkg/utils"
 )
 
-func Login(c *gin.Context) {
+func GetToken(c *gin.Context) {
+
+	// weChat miniprogram code to session key
 	code := c.Param("code")
 	ret, err := utils.WeChatCli.GetMiniProgram().Code2Session(code)
 	if err != nil {
 		panic(errs.WeChatLoginFailed)
 	}
-	user, isNew := controllers.GetOrCrateUserByUnionid(ret.UnionID)
+	accessToken, err := utils.WeChatCli.GetAccessToken()
+	wxUserInfo, err := utils.WeChatCli.GetOauth().GetUserInfo(accessToken, ret.OpenID)
+	user, isNew := controllers.GetOrCrateUserByUnionID(ret.UnionID, &wxUserInfo)
 	controllers.WriteSession2Resp(user, isNew, c)
 }

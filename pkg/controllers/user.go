@@ -21,6 +21,7 @@ func CreateUser(phone string) (*models.User, error) {
 	user := &models.User{
 		Phone: phone,
 	}
+	user.Phone = phone
 	// 这里考虑一下 db insert failed 的情况
 	storage.Mysql.Master.Save(user)
 	return user, nil

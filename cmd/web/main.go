@@ -12,8 +12,7 @@ import (
 func init(){
 	config.Conf.Load("./etc")
 	storage.InitAllStorage()
-	utils.InitWeChat(config.Conf.WeChat)
-
+	utils.InitWeChat(config.Conf.WeChat, config.Conf.Redis.Cache)
 }
 
 func main() {

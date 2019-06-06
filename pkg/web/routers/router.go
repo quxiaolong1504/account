@@ -21,16 +21,16 @@ func NewRouter() *gin.Engine {
 		auth.POST("/digits", register.SendRegDigitalHandler)
 		auth.POST("/validate/digits", register.VerifyDigitalHandler)
 		auth.POST("/refresh/token", register.RefreshToken)
-
 	}
 
 	weChat := v1.Group("/wx")
 	{
-		weChat.POST("/login", wx.Login)
+		weChat.POST("/miniprogram/session_key", wx.GetToken)
+		// TODO 跟小程序端获取 用户手机号信息
+		// TODO bind WeChat
 	}
 
 	r.GET("/hello", register.HelloHandler)
-
 
 	return r
 }
