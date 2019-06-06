@@ -1,0 +1,842 @@
+{
+  "meta": {
+    "chronografVersion": "1.7.11",
+    "sources": {
+      "1": {
+        "name": "default db",
+        "link": "/chronograf/v1/sources/1"
+      }
+    }
+  },
+  "dashboard": {
+    "id": 6,
+    "cells": [
+      {
+        "i": "3bf4c157-dd92-4368-8697-c90c59e5b383",
+        "x": 8,
+        "y": 0,
+        "w": 4,
+        "h": 4,
+        "name": "http satus 「5xx & 401」",
+        "queries": [
+          {
+            "query": "SELECT max(\"401\") AS \"max_401\", max(\"5xx\") AS \"max_5xx\" FROM \"monitor\".\"autogen\".\"status\" WHERE time > :dashboardTime: GROUP BY time(:interval:), \"handler\" FILL(null)",
+            "queryConfig": {
+              "database": "monitor",
+              "measurement": "status",
+              "retentionPolicy": "autogen",
+              "fields": [
+                {
+                  "value": "max",
+                  "type": "func",
+                  "alias": "max_401",
+                  "args": [
+                    {
+                      "value": "401",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                },
+                {
+                  "value": "max",
+                  "type": "func",
+                  "alias": "max_5xx",
+                  "args": [
+                    {
+                      "value": "5xx",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                }
+              ],
+              "tags": {},
+              "groupBy": {
+                "time": "auto",
+                "tags": [
+                  "handler"
+                ]
+              },
+              "areTagsAccepted": false,
+              "fill": "null",
+              "rawText": null,
+              "range": null,
+              "shifts": null
+            },
+            "source": "/chronograf/v1/sources/1",
+            "type": "influxql"
+          }
+        ],
+        "axes": {
+          "x": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          },
+          "y": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "2",
+            "scale": "linear"
+          },
+          "y2": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          }
+        },
+        "type": "line-stacked",
+        "colors": [
+          {
+            "id": "4d288bde-8d06-4df6-907c-3014ba8a48fc",
+            "type": "scale",
+            "hex": "#8F8AF4",
+            "name": "Do Androids Dream of Electric Sheep?",
+            "value": "0"
+          },
+          {
+            "id": "5e1bbcc6-2ea1-4ac9-ba3a-63ee80fcb675",
+            "type": "scale",
+            "hex": "#A51414",
+            "name": "Do Androids Dream of Electric Sheep?",
+            "value": "0"
+          },
+          {
+            "id": "3316ca29-97da-4f20-86aa-0fe584d82b00",
+            "type": "scale",
+            "hex": "#F4CF31",
+            "name": "Do Androids Dream of Electric Sheep?",
+            "value": "0"
+          }
+        ],
+        "legend": {},
+        "tableOptions": {
+          "verticalTimeAxis": true,
+          "sortBy": {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          },
+          "wrapping": "truncate",
+          "fixFirstColumn": true
+        },
+        "fieldOptions": [
+          {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          }
+        ],
+        "timeFormat": "MM/DD/YYYY HH:mm:ss",
+        "decimalPlaces": {
+          "isEnforced": false,
+          "digits": 2
+        },
+        "note": "",
+        "noteVisibility": "showWhenNoData",
+        "links": {
+          "self": "/chronograf/v1/dashboards/6/cells/3bf4c157-dd92-4368-8697-c90c59e5b383"
+        }
+      },
+      {
+        "i": "119c9ee6-cd06-4324-9484-302bd4117eae",
+        "x": 0,
+        "y": 0,
+        "w": 4,
+        "h": 4,
+        "name": "QPS",
+        "queries": [
+          {
+            "query": "SELECT max(\"qps\") AS \"max_qps\" FROM \"monitor\".\"autogen\".\"performance\" WHERE time > :dashboardTime: GROUP BY time(:interval:) FILL(null)",
+            "queryConfig": {
+              "database": "monitor",
+              "measurement": "performance",
+              "retentionPolicy": "autogen",
+              "fields": [
+                {
+                  "value": "max",
+                  "type": "func",
+                  "alias": "max_qps",
+                  "args": [
+                    {
+                      "value": "qps",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                }
+              ],
+              "tags": {},
+              "groupBy": {
+                "time": "auto",
+                "tags": []
+              },
+              "areTagsAccepted": false,
+              "fill": "null",
+              "rawText": null,
+              "range": null,
+              "shifts": null
+            },
+            "source": "/chronograf/v1/sources/1",
+            "type": "influxql"
+          }
+        ],
+        "axes": {
+          "x": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          },
+          "y": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "2",
+            "scale": "linear"
+          },
+          "y2": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          }
+        },
+        "type": "line",
+        "colors": [
+          {
+            "id": "8853547e-e47d-4015-bf4a-701af040b7e8",
+            "type": "scale",
+            "hex": "#74D495",
+            "name": "Atlantis",
+            "value": "0"
+          },
+          {
+            "id": "02fd2926-0aa0-4250-9d9a-9b7b90762941",
+            "type": "scale",
+            "hex": "#3F3FBA",
+            "name": "Atlantis",
+            "value": "0"
+          },
+          {
+            "id": "50a587b7-c417-4401-ac16-667463734abc",
+            "type": "scale",
+            "hex": "#FF4D9E",
+            "name": "Atlantis",
+            "value": "0"
+          }
+        ],
+        "legend": {},
+        "tableOptions": {
+          "verticalTimeAxis": true,
+          "sortBy": {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          },
+          "wrapping": "truncate",
+          "fixFirstColumn": true
+        },
+        "fieldOptions": [
+          {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          }
+        ],
+        "timeFormat": "MM/DD/YYYY HH:mm:ss",
+        "decimalPlaces": {
+          "isEnforced": false,
+          "digits": 2
+        },
+        "note": "",
+        "noteVisibility": "showWhenNoData",
+        "links": {
+          "self": "/chronograf/v1/dashboards/6/cells/119c9ee6-cd06-4324-9484-302bd4117eae"
+        }
+      },
+      {
+        "i": "7b9471c7-cd6d-49e8-9141-0d8bdca89f36",
+        "x": 0,
+        "y": 4,
+        "w": 4,
+        "h": 4,
+        "name": "API QPS",
+        "queries": [
+          {
+            "query": "SELECT mean(\"qps\") AS \"mean_qps\" FROM \"monitor\".\"autogen\".\"performance\" WHERE time > :dashboardTime: GROUP BY time(:interval:), \"handler\" FILL(null)",
+            "queryConfig": {
+              "database": "monitor",
+              "measurement": "performance",
+              "retentionPolicy": "autogen",
+              "fields": [
+                {
+                  "value": "mean",
+                  "type": "func",
+                  "alias": "mean_qps",
+                  "args": [
+                    {
+                      "value": "qps",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                }
+              ],
+              "tags": {},
+              "groupBy": {
+                "time": "auto",
+                "tags": [
+                  "handler"
+                ]
+              },
+              "areTagsAccepted": false,
+              "fill": "null",
+              "rawText": null,
+              "range": null,
+              "shifts": null
+            },
+            "source": "/chronograf/v1/sources/1",
+            "type": "influxql"
+          }
+        ],
+        "axes": {
+          "x": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          },
+          "y": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "2",
+            "scale": "linear"
+          },
+          "y2": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          }
+        },
+        "type": "line",
+        "colors": [
+          {
+            "id": "b25784da-bd80-4827-876c-6b65c769671b",
+            "type": "scale",
+            "hex": "#74D495",
+            "name": "Atlantis",
+            "value": "0"
+          },
+          {
+            "id": "b82f7b45-6f44-47ea-b975-0063ecf9b761",
+            "type": "scale",
+            "hex": "#3F3FBA",
+            "name": "Atlantis",
+            "value": "0"
+          },
+          {
+            "id": "deb7d3d9-6324-461d-b644-3ee55cae1ed6",
+            "type": "scale",
+            "hex": "#FF4D9E",
+            "name": "Atlantis",
+            "value": "0"
+          }
+        ],
+        "legend": {},
+        "tableOptions": {
+          "verticalTimeAxis": true,
+          "sortBy": {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          },
+          "wrapping": "truncate",
+          "fixFirstColumn": true
+        },
+        "fieldOptions": [
+          {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          }
+        ],
+        "timeFormat": "MM/DD/YYYY HH:mm:ss",
+        "decimalPlaces": {
+          "isEnforced": false,
+          "digits": 2
+        },
+        "note": "",
+        "noteVisibility": "showWhenNoData",
+        "links": {
+          "self": "/chronograf/v1/dashboards/6/cells/7b9471c7-cd6d-49e8-9141-0d8bdca89f36"
+        }
+      },
+      {
+        "i": "7f8edeb7-cf46-4cfb-abe3-74bdba19cc46",
+        "x": 4,
+        "y": 0,
+        "w": 4,
+        "h": 4,
+        "name": "响应时间",
+        "queries": [
+          {
+            "query": "SELECT mean(\"rt\") AS \"mean_rt\" FROM \"monitor\".\"autogen\".\"performance\" WHERE time > :dashboardTime: GROUP BY time(:interval:) FILL(null)",
+            "queryConfig": {
+              "database": "monitor",
+              "measurement": "performance",
+              "retentionPolicy": "autogen",
+              "fields": [
+                {
+                  "value": "mean",
+                  "type": "func",
+                  "alias": "mean_rt",
+                  "args": [
+                    {
+                      "value": "rt",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                }
+              ],
+              "tags": {},
+              "groupBy": {
+                "time": "auto",
+                "tags": []
+              },
+              "areTagsAccepted": false,
+              "fill": "null",
+              "rawText": null,
+              "range": null,
+              "shifts": null
+            },
+            "source": "/chronograf/v1/sources/1",
+            "type": "influxql"
+          }
+        ],
+        "axes": {
+          "x": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          },
+          "y": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "s",
+            "base": "2",
+            "scale": "linear"
+          },
+          "y2": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          }
+        },
+        "type": "line-stacked",
+        "colors": [
+          {
+            "id": "954472a9-f01c-4c84-968f-73d2d352ee55",
+            "type": "scale",
+            "hex": "#FD7A5D",
+            "name": "Delorean",
+            "value": "0"
+          },
+          {
+            "id": "c03af698-5acd-40f7-a410-4b341f7678af",
+            "type": "scale",
+            "hex": "#5F1CF2",
+            "name": "Delorean",
+            "value": "0"
+          },
+          {
+            "id": "90bd96bf-ea98-4a4c-a499-c551dbfd5e2e",
+            "type": "scale",
+            "hex": "#4CE09A",
+            "name": "Delorean",
+            "value": "0"
+          }
+        ],
+        "legend": {},
+        "tableOptions": {
+          "verticalTimeAxis": true,
+          "sortBy": {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          },
+          "wrapping": "truncate",
+          "fixFirstColumn": true
+        },
+        "fieldOptions": [
+          {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          }
+        ],
+        "timeFormat": "MM/DD/YYYY HH:mm:ss",
+        "decimalPlaces": {
+          "isEnforced": false,
+          "digits": 2
+        },
+        "note": "",
+        "noteVisibility": "showWhenNoData",
+        "links": {
+          "self": "/chronograf/v1/dashboards/6/cells/7f8edeb7-cf46-4cfb-abe3-74bdba19cc46"
+        }
+      },
+      {
+        "i": "aca7d413-ec12-4942-aad1-f63e3fdf72ad",
+        "x": 4,
+        "y": 4,
+        "w": 4,
+        "h": 4,
+        "name": "API 响应时间",
+        "queries": [
+          {
+            "query": "SELECT max(\"rt\") AS \"max_rt\" FROM \"monitor\".\"autogen\".\"performance\" WHERE time > :dashboardTime: GROUP BY time(:interval:), \"handler\" FILL(null)",
+            "queryConfig": {
+              "database": "monitor",
+              "measurement": "performance",
+              "retentionPolicy": "autogen",
+              "fields": [
+                {
+                  "value": "max",
+                  "type": "func",
+                  "alias": "max_rt",
+                  "args": [
+                    {
+                      "value": "rt",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                }
+              ],
+              "tags": {},
+              "groupBy": {
+                "time": "auto",
+                "tags": [
+                  "handler"
+                ]
+              },
+              "areTagsAccepted": false,
+              "fill": "null",
+              "rawText": null,
+              "range": null,
+              "shifts": null
+            },
+            "source": "/chronograf/v1/sources/1",
+            "type": "influxql"
+          }
+        ],
+        "axes": {
+          "x": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          },
+          "y": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "s",
+            "base": "2",
+            "scale": "linear"
+          },
+          "y2": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          }
+        },
+        "type": "line-stacked",
+        "colors": [
+          {
+            "id": "954472a9-f01c-4c84-968f-73d2d352ee55",
+            "type": "scale",
+            "hex": "#FD7A5D",
+            "name": "Delorean",
+            "value": "0"
+          },
+          {
+            "id": "c03af698-5acd-40f7-a410-4b341f7678af",
+            "type": "scale",
+            "hex": "#5F1CF2",
+            "name": "Delorean",
+            "value": "0"
+          },
+          {
+            "id": "90bd96bf-ea98-4a4c-a499-c551dbfd5e2e",
+            "type": "scale",
+            "hex": "#4CE09A",
+            "name": "Delorean",
+            "value": "0"
+          }
+        ],
+        "legend": {},
+        "tableOptions": {
+          "verticalTimeAxis": true,
+          "sortBy": {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          },
+          "wrapping": "truncate",
+          "fixFirstColumn": true
+        },
+        "fieldOptions": [
+          {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          }
+        ],
+        "timeFormat": "MM/DD/YYYY HH:mm:ss",
+        "decimalPlaces": {
+          "isEnforced": false,
+          "digits": 2
+        },
+        "note": "",
+        "noteVisibility": "showWhenNoData",
+        "links": {
+          "self": "/chronograf/v1/dashboards/6/cells/aca7d413-ec12-4942-aad1-f63e3fdf72ad"
+        }
+      },
+      {
+        "i": "ccf7a3cd-76cb-4727-8a62-c93f8978b370",
+        "x": 8,
+        "y": 4,
+        "w": 4,
+        "h": 4,
+        "name": "API Status",
+        "queries": [
+          {
+            "query": "SELECT max(\"401\") AS \"max_401\", max(\"5xx\") AS \"max_5xx\" FROM \"monitor\".\"autogen\".\"status\" WHERE time > :dashboardTime: GROUP BY time(:interval:), \"handler\" FILL(null)",
+            "queryConfig": {
+              "database": "monitor",
+              "measurement": "status",
+              "retentionPolicy": "autogen",
+              "fields": [
+                {
+                  "value": "max",
+                  "type": "func",
+                  "alias": "max_401",
+                  "args": [
+                    {
+                      "value": "401",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                },
+                {
+                  "value": "max",
+                  "type": "func",
+                  "alias": "max_5xx",
+                  "args": [
+                    {
+                      "value": "5xx",
+                      "type": "field",
+                      "alias": ""
+                    }
+                  ]
+                }
+              ],
+              "tags": {},
+              "groupBy": {
+                "time": "auto",
+                "tags": [
+                  "handler"
+                ]
+              },
+              "areTagsAccepted": false,
+              "fill": "null",
+              "rawText": null,
+              "range": null,
+              "shifts": null
+            },
+            "source": "/chronograf/v1/sources/1",
+            "type": "influxql"
+          }
+        ],
+        "axes": {
+          "x": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          },
+          "y": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "2",
+            "scale": "linear"
+          },
+          "y2": {
+            "bounds": [
+              "",
+              ""
+            ],
+            "label": "",
+            "prefix": "",
+            "suffix": "",
+            "base": "10",
+            "scale": "linear"
+          }
+        },
+        "type": "line",
+        "colors": [
+          {
+            "id": "954472a9-f01c-4c84-968f-73d2d352ee55",
+            "type": "scale",
+            "hex": "#FD7A5D",
+            "name": "Delorean",
+            "value": "0"
+          },
+          {
+            "id": "c03af698-5acd-40f7-a410-4b341f7678af",
+            "type": "scale",
+            "hex": "#5F1CF2",
+            "name": "Delorean",
+            "value": "0"
+          },
+          {
+            "id": "90bd96bf-ea98-4a4c-a499-c551dbfd5e2e",
+            "type": "scale",
+            "hex": "#4CE09A",
+            "name": "Delorean",
+            "value": "0"
+          }
+        ],
+        "legend": {},
+        "tableOptions": {
+          "verticalTimeAxis": true,
+          "sortBy": {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          },
+          "wrapping": "truncate",
+          "fixFirstColumn": true
+        },
+        "fieldOptions": [
+          {
+            "internalName": "time",
+            "displayName": "",
+            "visible": true
+          }
+        ],
+        "timeFormat": "MM/DD/YYYY HH:mm:ss",
+        "decimalPlaces": {
+          "isEnforced": false,
+          "digits": 2
+        },
+        "note": "",
+        "noteVisibility": "showWhenNoData",
+        "links": {
+          "self": "/chronograf/v1/dashboards/6/cells/ccf7a3cd-76cb-4727-8a62-c93f8978b370"
+        }
+      }
+    ],
+    "templates": [],
+    "name": "流量大盘",
+    "organization": "default",
+    "links": {
+      "self": "/chronograf/v1/dashboards/6",
+      "cells": "/chronograf/v1/dashboards/6/cells",
+      "templates": "/chronograf/v1/dashboards/6/templates"
+    }
+  }
+}
