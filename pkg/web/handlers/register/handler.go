@@ -44,5 +44,5 @@ func VerifyDigitalHandler (c *gin.Context) {
 
 func HelloHandler(c *gin.Context) {
 	uid := c.Value("uid")
-	c.JSON(http.StatusOK, gin.H{"uid": uid})
+	c.JSON(http.StatusInternalServerError, gin.H{"uid": uid})
 }

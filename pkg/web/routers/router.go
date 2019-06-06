@@ -11,6 +11,7 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(middlewares.Recover())
 	r.Use(middlewares.Authentication())
+	r.Use(middlewares.Monitor())
 	v1 := r.Group("/v1")
 
 	auth := v1.Group("/auth")
@@ -18,8 +19,9 @@ func NewRouter() *gin.Engine {
 		// register handler for router
 		auth.POST("/digits", register.SendRegDigitalHandler)
 		auth.POST("/validate/digits", register.VerifyDigitalHandler)
-		auth.GET("/hello", register.HelloHandler)
+
 	}
+	r.GET("/hello", register.HelloHandler)
 
 
 	return r

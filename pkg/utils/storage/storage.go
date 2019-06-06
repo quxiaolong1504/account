@@ -12,5 +12,5 @@ func InitAllStorage() {
 func ShutDownStorage() {
 	ShutDownMysql()
 	ShutdownRedis()
-	ShutDownInfluxdb()
+	ShutDownInfluxDB()
 }

@@ -6,7 +6,7 @@ import (
 	"github.com/quxiaolong/account/pkg/config"
 )
 
-var dbClient *client.Client
+var InfluxDB client.Client
 
 
 func InitInfluxDBClient(conf *config.InfluxDBConfig)  {
@@ -18,10 +18,10 @@ func InitInfluxDBClient(conf *config.InfluxDBConfig)  {
 	if err != nil {
 		fmt.Println("Error creating InfluxDB Client: ", err.Error())
 	}
+	InfluxDB = c
 
-	dbClient = &c
 }
 
-func ShutDownInfluxdb() {
-	(*dbClient).Close()
+func ShutDownInfluxDB() {
+	InfluxDB.Close()
 }
