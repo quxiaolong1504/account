@@ -32,10 +32,11 @@ func Monitor() gin.HandlerFunc {
 			}
 
 			batchPoint.AddPoint(point)
-			_ = storage.InfluxDB.Write(batchPoint)
+			err := storage.InfluxDB.Write(batchPoint)
+			if err!= nil {
+				fmt.Print(err.Error())
+			}
 		}()
-
-
 
 		c.Next()
 	}

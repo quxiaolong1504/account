@@ -10,7 +10,7 @@ import (
 var WeChatCli  *wechat.Wechat
 
 
-func InitWeChat(conf *config.WeChatConfig, redisConf *config.RedisConf) {
+func InitWeChatClient(conf *config.WeChatConfig, redisConf *config.RedisConf) {
 	WeChatCli = wechat.NewWechat(&wechat.Config{
 		AppID: conf.AppID,
 		AppSecret: conf.AppSecret,

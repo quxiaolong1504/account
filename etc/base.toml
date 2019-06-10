@@ -35,7 +35,7 @@
 
 [influxdb]
   protocol = "http"
-  host = "quxl.dev.rack.zhihu.com"
+  host = "localhost"
   port = 8086
   username = ""
   password = ""
